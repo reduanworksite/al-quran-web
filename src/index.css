@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "Hind Siliguri", system-ui, sans-serif;
+  --font-bangla: "Hind Siliguri", "Inter", system-ui, sans-serif;
+  --font-quran: "Amiri Quran", "Scheherazade New", "Noto Naskh Arabic", serif;
+  --font-arabic: "Noto Naskh Arabic", "Amiri Quran", serif;
+
+  --color-cream: #faf7ef;
+  --color-cream-dark: #f3eddd;
+  --color-emerald-deep: #0b3d2e;
+  --color-emerald-brand: #0e6b4a;
+  --color-emerald-soft: #e3f0e8;
+  --color-gold: #b9975b;
+  --color-gold-soft: #f3e9d2;
+  --color-ink: #1d2b25;
+  --color-ink-soft: #5c6f65;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #faf7ef;
+  color: #1d2b25;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background-color: #0d1a14;
+  color: #e8efe9;
+}
+
+.quran-text {
+  font-family: var(--font-quran);
+  line-height: 2.1;
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+
+.arabic-name {
+  font-family: var(--font-arabic);
+}
+
+.bangla-text {
+  font-family: var(--font-bangla);
+}
+
+/* Lightweight animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.animate-fade-up { animation: fadeUp 0.45s ease both; }
+.animate-fade-in { animation: fadeIn 0.3s ease both; }
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.12) 37%, rgba(0,0,0,0.06) 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 0.5rem;
+}
+.dark .skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.12) 37%, rgba(255,255,255,0.06) 63%);
+  background-size: 800px 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c9c2ae; border-radius: 8px; }
+.dark ::-webkit-scrollbar-thumb { background: #2c4a3a; }
+
+/* Range inputs */
+input[type="range"] { accent-color: #0e6b4a; }
+
+/* Ayah number badge */
+.ayah-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.45rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1.5px solid #b9975b;
+  color: #0e6b4a;
+  background: #f3e9d2;
+}
+.dark .ayah-badge {
+  background: #1d352a;
+  color: #d8c690;
+}
